@@ -3,34 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inverted Diamond Pattern Generator</title>
+  <title>Diamond Text Generator</title>
   <style>
-    /* Optional styling for the output area */
+    /* Styling for the output area */
     #output {
       font-family: monospace;
       background-color: #eee;
       padding: 10px;
       border-radius: 5px;
+      width: fit-content; /* Optional to adjust width for wide patterns */
+      text-align: center; /* Center align text horizontally */
     }
   </style>
 </head>
 <body>
-  <h1>Multiple Lines Text Generator</h1>
+  <h1>Diamond Text Generator</h1>
   <form id="pattern-form">
-    <label for="character">Text</label>
+    <label for="character">Text:</label>
     <input type="text" id="character" name="character" value="Type Your Text Here">
     <br>
     <label for="count">Number of Rows:</label>
     <input type="number" id="count" name="count" min="1" value="10">
     <br>
-    <!--
-    <label for="inverted">Inverted (default: yes):</label>
-    <input type="checkbox" id="inverted" name="inverted" checked>
---> 
-    <br>
     <button type="submit">Generate Pattern</button>
   </form>
-  <pre id="output"></pre>
-  <script src="script.js"></script>
+  <div id="output"></div>
+  <script>
+    const form = document.getElementById('pattern-form');
+    const output = document.getElementById('output');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const character = document.getElementById('character').value;
+      const count = parseInt(document.getElementById('count').value);
+
+      let result = '';
+      const centeredText = character.padStart((count * 2) - 1, ' '); // Pad text with spaces for centering
+
+      // Repeat the centered text for the number of rows
+      for (let i = 0; i < count; i++) {
+        result += centeredText + '\n';
+      }
+
+      output.textContent = result;
+    });
+  </script>
 </body>
 </html>
