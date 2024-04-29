@@ -25,8 +25,7 @@ form.addEventListener('submit', function(event) {
   output.textContent = result;
 });
 
-function padRow(rowNumber, rowCount, char = '#') {
-  const padding = ' '.repeat(rowCount - rowNumber);
-  const repeatChar = char.repeat(2 * rowNumber - 1);
-  return padding + repeatChar + padding;
+function padRow(rowNumber, char = '#') {
+  const repeatChar = char.repeat
+    return repeatChar;
                                  }
